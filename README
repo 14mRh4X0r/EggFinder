@@ -1,0 +1,2 @@
+EggFinder is a proof-of-concept plugin that interfaces with CanaryMod's Plugin Nest.
+You need to include the latest CanaryMod.jar into your classpath to compile this plugin.
