@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -17,7 +16,7 @@ public class Downloader {
             DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             return db.parse("http://www.canarymod.net/plugins/xml.php?name=" + URLEncoder.encode(search, "UTF-8"));
         } catch (Exception ex) {
-            EggFinder.log.log(Level.SEVERE, "Something went wrong while parsing the search results", ex);
+            EggFinder.LOG.log(Level.SEVERE, "Something went wrong while parsing the search results", ex);
         }
         return null;
     }
@@ -85,9 +84,9 @@ public class Downloader {
         
         try {
             Main.downloadFile("http://dl.canarymod.net/plugins/get.php?c="
-                    + category + "&id=" + id, "plugins/" + title + ".jar");
+                    + category.toLowerCase() + "&id=" + id, "plugins/" + title + ".jar");
         } catch (IOException ex) {
-            EggFinder.log.log(Level.SEVERE, "Something went wrong while downloading the plugin", ex);
+            EggFinder.LOG.log(Level.SEVERE, "Something went wrong while downloading the plugin", ex);
         }
         
         if (install) {
